@@ -1,7 +1,8 @@
+require_relative 'Player.rb'
 class Computer < Player
 
   def initialize
-
+    
   end
 
 
