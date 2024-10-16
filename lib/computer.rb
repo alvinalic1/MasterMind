@@ -8,8 +8,9 @@ class Computer < Player
 
   def generate_code
     code = []
-    4.times do
-      code.push(COLOR_OPTIONS[random_number_generator])
+    while code.length < 4 do
+      color = COLOR_OPTIONS[random_number_generator]
+      code.push(color) unless code.include?(color)
     end
     code
   end
