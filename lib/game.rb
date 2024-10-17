@@ -1,8 +1,11 @@
+require_relative 'Player.rb'
+require_relative 'Human.rb'
+require_relative 'Computer.rb'
 class Game
 
   def initialize(human_player, computer_player)
-    self.human_player = human_player
-    self.computer_player = computer_player
+    @human_player = human_player
+    @computer_player = computer_player
   end
 
   def intructions
@@ -14,8 +17,16 @@ class Game
     puts "Green means that one of your colors was correct AND in the right spot"
   end
 
+  def get_player_guess
+    @human_player.guess = []
+    puts "write each color you want to guess seperate by spaces"
+    answer = gets.chomp
+    @human_player.guess = answer.split(" ")
+  end
+
   def check_code(player_guess, secret_code)
     hints = []
+    @human_player.number_of_guess += 1
     secret_code.each_with_index do |color, index|
       if player_guess.include?(color)
         if player_guess.find_index(color) == index
@@ -28,13 +39,9 @@ class Game
       end
 
     end
+    puts @human_player.number_of_guess
     hints
   end
 
-  private 
 
-  def random_number_generator
-    random_number = Random.new
-    random_number.rand(0...COLOR_OPTIONS.length)
-  end
 end
