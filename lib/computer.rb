@@ -15,6 +15,23 @@ class Computer < Player
     code
   end
 
+  def check_code(player_guess, secret_code)
+    hints = []
+    secret_code.each_with_index do |color, index|
+      if player_guess.include?(color)
+        if player_guess.find_index(color) == index
+          hints.push("Correct color and spot")
+        else
+          hints.push("Correct color, wrong spot")
+        end
+      else
+        hints.push("Wrong")
+      end
+
+    end
+    hints
+  end
+
   private 
 
   def random_number_generator
