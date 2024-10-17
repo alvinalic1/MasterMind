@@ -1,8 +1,9 @@
 require_relative 'Player.rb'
 class Computer < Player
 
+  attr_accessor :secret_code
   def initialize
-    
+    self.secret_code = generate_code
   end
 
 
@@ -13,23 +14,6 @@ class Computer < Player
       code.push(color) unless code.include?(color)
     end
     code
-  end
-
-  def check_code(player_guess, secret_code)
-    hints = []
-    secret_code.each_with_index do |color, index|
-      if player_guess.include?(color)
-        if player_guess.find_index(color) == index
-          hints.push("Green")
-        else
-          hints.push("White")
-        end
-      else
-        hints.push("Wrong")
-      end
-
-    end
-    hints
   end
 
   private 
