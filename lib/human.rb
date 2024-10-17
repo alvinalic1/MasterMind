@@ -1,7 +1,8 @@
 class Human < Player
-  attr_accessor :guess, :secret_code, :number_of_guess
+  attr_accessor :guess, :secret_code, :name
 
-  def initialize
-    @number_of_guess = 0
+  def initialize(name)
+    super()
+    @name = name
   end
 end
