@@ -39,8 +39,17 @@ class Game
       end
 
     end
-    puts @human_player.number_of_guess
+    if(@human_player.number_of_guess == 12)
+      game_over
+      return
+    end
     hints
+  end
+
+  def game_over
+    puts "GAME OVER, you took too long to guess the code"
+    puts "The secret code was"
+    computer_player.secret_code
   end
 
 
