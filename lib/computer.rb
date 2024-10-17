@@ -20,9 +20,9 @@ class Computer < Player
     secret_code.each_with_index do |color, index|
       if player_guess.include?(color)
         if player_guess.find_index(color) == index
-          hints.push("Correct color and spot")
+          hints.push("Green")
         else
-          hints.push("Correct color, wrong spot")
+          hints.push("White")
         end
       else
         hints.push("Wrong")
