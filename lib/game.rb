@@ -27,9 +27,9 @@ class Game
   def check_code(player_guess, secret_code)
     hints = []
     @human_player.number_of_guess += 1
-    secret_code.each_with_index do |color, index|
-      if player_guess.include?(color)
-        if player_guess.find_index(color) == index
+    player_guess.each_with_index do |color, index|
+      if secret_code.include?(color)
+        if secret_code.find_index(color) == index
           hints.push("Green")
         else
           hints.push("White")
@@ -37,19 +37,34 @@ class Game
       else
         hints.push("Wrong")
       end
-
     end
-    if(@human_player.number_of_guess == 12)
-      game_over
-      return
-    end
+    # secret_code.each_with_index do |color, index|
+    #   if player_guess.include?(color)
+    #     if player_guess.find_index(color) == index
+    #       hints.push("Green")
+    #     else
+    #       hints.push("White")
+    #     end
+    #   else
+    #     hints.push("Wrong")
+    #   end
+      
+    #end
+    print "Player guess: #{player_guess}"
+     print "\n"
+    print "Secret code: #{secret_code}"
+    print "\n"
     hints
   end
 
-  def game_over
+  def game_over_loser
     puts "GAME OVER, you took too long to guess the code"
     puts "The secret code was"
-    computer_player.secret_code
+    puts @computer_player.secret_code
+  end
+
+  def game_over_winner
+    puts "CONGRATS YOU GUESSED THE CODE"
   end
 
 
