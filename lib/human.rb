@@ -5,4 +5,10 @@ class Human < Player
     super()
     @name = name
   end
+
+  def generate_code
+    puts "Enter your code so each color is seperated by a space"
+    c = gets.chomp
+    @secret_code = c.split(" ")
+  end
 end
