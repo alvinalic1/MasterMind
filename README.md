@@ -2,6 +2,10 @@
 Mastermind game where the player can choose if they want to be the creator of the secret code or the guesser
 Whoever is guessing has 12 guesses to get the correct answer
 
+When the program starts, you are prompted with a question to decide if you are guesser or creater of code
+1 for guesser
+2 for creater 
+
 If the computer is guessing then worst case it will take 8 guesses and best case will take 4
 The aglorithm makes the computer guess one color at a time for all of the guesses and whenever it gets a green hint it saves that
 
