@@ -1,17 +1,16 @@
-require_relative 'Player.rb'
+require_relative 'Player'
 class Computer < Player
-
   attr_accessor :secret_code, :guess
+
   def initialize
     super
     self.secret_code = generate_code
     self.guess = []
   end
 
-
   def generate_code
     code = []
-    while code.length < 4 do
+    while code.length < 4
       color = COLOR_OPTIONS[random_number_generator]
       code.push(color) unless code.include?(color)
     end
@@ -30,9 +29,7 @@ class Computer < Player
 
   def guess_code(hints, guess)
     hints.each_with_index do |hint, index|
-      if hint == "Green"
-        @guess[index] = guess[index]
-      end
+      @guess[index] = guess[index] if hint == 'Green'
     end
     initial_guess
   end
@@ -55,7 +52,7 @@ class Computer < Player
   #         if index == 3
   #           temp = @guess[index]
   #           @guess[index] = @guess[0]
-  #           @guess[0] = temp 
+  #           @guess[0] = temp
   #         else
   #           temp = @guess[index]
   #           @guess[index] = @guess[index+1]
@@ -65,12 +62,12 @@ class Computer < Player
   #         new_guess = COLOR_OPTIONS[random_number_generator] unless @guess.include?(new_guess)
   #         @guess[index] = new_guess
   #     end
-      
+
   #   end
   #   @guess
   # end
 
-  private 
+  private
 
   def random_number_generator
     random_number = Random.new

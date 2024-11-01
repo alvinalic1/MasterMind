@@ -7,8 +7,8 @@ class Human < Player
   end
 
   def generate_code
-    puts "Enter your code so each color is seperated by a space"
+    puts 'Enter your code so each color is seperated by a space'
     c = gets.chomp
-    @secret_code = c.split(" ")
+    @secret_code = c.split(' ')
   end
 end
