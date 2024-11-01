@@ -11,10 +11,7 @@ class Main
   answer = gets.chomp
 
   if answer == '1'
-    c = Computer.new
-    h = Human.new('Alvin')
     secret_code = h.generate_code
-    g = Game.new(h, c)
     computer_guess = g.get_computer_guess_initial
     hints = g.check_code(computer_guess, secret_code)
 
@@ -30,14 +27,11 @@ class Main
       puts "The correct guess is #{c.guess}"
       g.game_over_winner
       break
-
     end
 
   elsif answer == '2'
-    hints = []
     secret_code = c.generate_code
     until hints == %w[Green Green Green Green]
-      # debugger
       my_guess = g.get_player_guess
       hints = g.check_code(my_guess, secret_code)
       if h.number_of_guess == 13
@@ -52,22 +46,4 @@ class Main
   else
     puts 'That is an invalid input'
   end
-
-  # hints = []
-
-  # until hints == ["Green", "Green", "Green", "Green"] do
-  #   # debugger
-  #   my_guess  = g.get_player_guess
-  #   hints = g.check_code(my_guess, secret_code)
-  #   if(h.number_of_guess == 13)
-  #     g.game_over_loser
-  #     break
-  #   end
-  #   puts hints
-  # end
-
-  # if(h.number_of_guess <= 12)
-  #   g.game_over_winner
-
-  # end
 end
