@@ -17,6 +17,14 @@ class Game
     puts "Green means that one of your colors was correct AND in the right spot"
   end
 
+  def get_computer_guess_initial
+    @computer_player.initial_guess
+  end
+
+  def get_computer_guess(hints, guess)
+    @computer_player.guess_code(hints, guess)
+  end
+
   def get_player_guess
     @human_player.guess = []
     puts "write each color you want to guess seperate by spaces"
@@ -26,7 +34,6 @@ class Game
 
   def check_code(player_guess, secret_code)
     hints = []
-    @human_player.number_of_guess += 1
     player_guess.each_with_index do |color, index|
       if secret_code.include?(color)
         if secret_code.find_index(color) == index
@@ -38,22 +45,11 @@ class Game
         hints.push("Wrong")
       end
     end
-    # secret_code.each_with_index do |color, index|
-    #   if player_guess.include?(color)
-    #     if player_guess.find_index(color) == index
-    #       hints.push("Green")
-    #     else
-    #       hints.push("White")
-    #     end
-    #   else
-    #     hints.push("Wrong")
-    #   end
-      
-    #end
-    print "Player guess: #{player_guess}"
-     print "\n"
-    print "Secret code: #{secret_code}"
-    print "\n"
+ 
+    # print "Player guess: #{player_guess}"
+    #  print "\n"
+    # print "Secret code: #{secret_code}"
+    # print "\n"
     hints
   end
 
